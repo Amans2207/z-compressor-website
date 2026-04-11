@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Z-Admin | Aman Studio</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; background: #f4f4f4; }
+        .form-box { background: white; padding: 20px; border-radius: 10px; max-width: 500px; margin-bottom: 30px; }
+        input, textarea { width: 100%; margin: 10px 0; padding: 10px; box-sizing: border-box; }
+        button { background: #0056b3; color: white; border: none; padding: 10px 20px; cursor: pointer; }
+        table { width: 100%; background: white; border-collapse: collapse; }
+        th, td { padding: 15px; border-bottom: 1px solid #ddd; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Z-Compressor Admin Panel</h1>
+    
+    <div class="form-box">
+        <h3>Add New Product</h3>
+        <form action="/admin/add" method="POST">
+            <input type="text" name="name" placeholder="Product Name (e.g. Stage 1 Element)" required>
+            <input type="text" name="part_no" placeholder="Part Number" required>
+            <input type="text" name="category" placeholder="Category">
+            <input type="number" name="price" placeholder="Price (Numbers only, e.g. 15000)" required>
+            <textarea name="description" placeholder="Description"></textarea>
+            <input type="text" name="image" placeholder="Image Name (e.g. part.jpg)">
+            <button type="submit">Add to Inventory</button>
+        </form>
+    </div>
+
+    <table>
+        <tr><th>Name</th><th>Part No</th><th>Price</th></tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.part_no }}</td>
+            <td>₹{{ item.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

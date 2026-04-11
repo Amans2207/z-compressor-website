@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout | Aman Studio</title>
+    <style>
+        body { text-align: center; padding: 100px; font-family: sans-serif; }
+        .pay-card { max-width: 400px; margin: auto; padding: 40px; border: 1px solid #ddd; border-radius: 15px; }
+        .btn-pay { background: #007bff; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <div class="pay-card">
+        <h2>Order Summary</h2>
+        <p><strong>Product:</strong> {{ item.name }}</p>
+        <p><strong>Amount:</strong> ₹{{ item.price }}</p>
+        <hr>
+        <button class="btn-pay" onclick="location.href='/payment-success'">PROCEED TO PAYMENT</button>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">Secure SSL Encrypted Payment</p>
+    </div>
+</body>
+</html>

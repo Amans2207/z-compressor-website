@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Z-Shop | Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; margin: 0; padding: 40px 5%; }
+        .back-btn { text-decoration: none; color: #004a99; font-weight: bold; display: block; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 5px solid #004a99; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .price { font-size: 1.6rem; color: #004a99; font-weight: bold; margin: 15px 0; display: block; }
+        .btn-buy { background: #28a745; color: white; display: block; text-align: center; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">← Back to Home</a>
+    <h1>Showing: {{ category if category else 'All Products' }}</h1>
+    <div class="grid">
+        {% for item in items %}
+        <div class="card">
+            <small style="color: #888; font-weight: bold;">PART NO: {{ item.part_no }}</small>
+            <h3 style="margin: 10px 0; color: #333;">{{ item.name }}</h3>
+            <p style="color: #666; font-size: 0.9rem;">{{ item.description }}</p>
+            <span class="price">₹{{ item.price }}</span>
+            <a href="/checkout/{{ item.id }}" class="btn-buy">ORDER NOW</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

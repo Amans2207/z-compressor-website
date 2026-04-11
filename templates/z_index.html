@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-COMPRESSOR PRO | Authorized Spares</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #004a99; --accent: #e31e24; --dark: #1a1a1a; --light: #f8f9fa; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+
+        /* Navbar */
+        nav { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
+
+        /* Slider Styles */
+        .hero-slider { position: relative; height: 550px; overflow: hidden; background: #1a1a1a; }
+        .slide { 
+            position: absolute; width: 100%; height: 100%; 
+            background-size: cover; background-position: center; 
+            display: flex; align-items: center; justify-content: center; 
+            opacity: 0; transition: opacity 0.8s ease-in-out; 
+        }
+        .slide.active { opacity: 1; position: relative; }
+        .hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
+        .hero-content { text-align: center; color: white; z-index: 2; padding: 0 10%; }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; text-transform: uppercase; }
+
+        /* Controls */
+        .prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; padding: 15px; cursor: pointer; font-size: 20px; border-radius: 50%; z-index: 10; transition: 0.3s; }
+        .next { right: 20px; } .prev { left: 20px; }
+        .prev:hover, .next:hover { background: var(--primary); }
+
+        /* Portfolio Section */
+        .section { padding: 80px 5%; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background: white; padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border-top: 5px solid var(--primary); }
+        .service-card:hover { transform: translateY(-10px); }
+        .btn-view { text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; }
+
+        footer { background: var(--dark); color: white; padding: 40px 5%; text-align: center; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">Z-COMPRESSOR<span>PRO</span></a>
+</nav>
+
+<header class="hero-slider">
+    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1350&q=80');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome To Z-Compressor</h1>
+            <p>Strategic Partner for Z-Series Maintenance & Spares.</p>
+        </div>
+    </div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1350&q=80');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Genuine Precision Parts</h1>
+            <p>High-efficiency screw elements and cooling systems.</p>
+        </div>
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</header>
+
+<section class="section" style="background: var(--light);">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-size: 2.5rem; color: var(--primary);">Our Authorized Portfolio</h2>
+        <p>Select a category to view specialized parts.</p>
+    </div>
+    <div class="grid-3">
+        <div class="service-card" style="border-top-color: #e31e24;">
+            <i class="fas fa-box-open" style="font-size: 3rem; color: #e31e24; margin-bottom: 20px;"></i>
+            <h3>Maintenance Kits</h3>
+            <p>2,000 to 24,000 Hour OEM Equivalent Service Kits.</p>
+            <a href="/shop?category=Maintenance+Kits" class="btn-view" style="color: #e31e24; margin-top: 20px;">View Products →</a>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-fan" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h3>Cooling Systems</h3>
+            <p>Precision Oil Coolers and Radiators for Z-Series.</p>
+            <a href="/shop?category=Cooling" class="btn-view" style="color: var(--primary); margin-top: 20px;">View Products →</a>
+        </div>
+        <div class="service-card" style="border-top-color: #333;">
+            <i class="fas fa-microchip" style="font-size: 3rem; color: #333; margin-bottom: 20px;"></i>
+            <h3>Sensors & Spares</h3>
+            <p>Genuine Transducers, Inlet Valves, and Electronics.</p>
+            <a href="/shop?category=Sensors" class="btn-view" style="color: #333; margin-top: 20px;">View Products →</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: white; padding: 80px 5%;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+        
+        <div style="flex: 1; min-width: 300px; position: relative;">
+            <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=800&q=80" alt="Refurbished Parts" style="width: 100%; border-radius: 15px; box-shadow: 20px 20px 0px var(--primary);">
+            <div style="position: absolute; bottom: 20px; right: -10px; background: var(--accent); color: white; padding: 15px 25px; border-radius: 5px; font-weight: bold;">
+                Save up to 20%
+            </div>
+        </div>
+
+        <div style="flex: 1; min-width: 300px;">
+            <h2 style="color: var(--primary); font-size: 2.2rem; margin-bottom: 20px;">Refurbished Parts & Elements</h2>
+            <p style="color: #555; font-size: 1.1rem; margin-bottom: 25px;">
+                High performance and reliability at a fraction of the cost. Our refurbished components meet or exceed OEM standards through meticulous testing.
+            </p>
+
+            <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;">
+                <li style="font-weight: bold; color: #333;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Screw Elements</li>
+                <li style="font-weight: bold; color: #333;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Coolers</li>
+                <li style="font-weight: bold; color: #333;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Cooler Housings</li>
+                <li style="font-weight: bold; color: #333;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Gearboxes</li>
+            </ul>
+
+            <div class="benefits-grid" style="display: grid; grid-template-columns: 1fr; gap: 20px; border-top: 1px solid #eee; pt-20; padding-top: 20px;">
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <i class="fas fa-shield-alt" style="color: var(--primary); font-size: 1.2rem;"></i>
+                    <div style="font-size: 0.95rem;"><strong>Warranty & Support:</strong> Full warranty and technical assistance.</div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: center; margin-top: 10px;">
+                    <i class="fas fa-phone-alt" style="color: #28a745; font-size: 1.2rem;"></i>
+                    <div style="font-size: 1rem; color: #333;"><strong>Contact for Availability:</strong> +91 XXXXXXxxx</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section" style="background: var(--light); padding: 80px 5%;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+        
+        <div style="background: white; padding: 40px; border-radius: 15px; border-left: 5px solid var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"><i class="fas fa-eye"></i></div>
+            <h2 style="color: var(--dark); margin-bottom: 15px;">Our Vision</h2>
+            <p style="color: #555; text-align: justify; font-size: 0.95rem; line-height: 1.8;">
+                Our vision is to be the global leader in innovative air compressor parts, driving the industry towards sustainable practices with eco-friendly and energy-efficient solutions. We aim to grow by understanding and exceeding customer expectations, fostering long-term partnerships, and leading in technological advancements to ensure our products remain at the forefront of the industry. Additionally, we strive to expand our global presence, making ZCompressor Part a trusted name worldwide.
+            </p>
+        </div>
+
+        <div style="background: white; padding: 40px; border-radius: 15px; border-left: 5px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;"><i class="fas fa-bullseye"></i></div>
+            <h2 style="color: var(--dark); margin-bottom: 15px;">Our Mission</h2>
+            <p style="color: #555; text-align: justify; font-size: 0.95rem; line-height: 1.8;">
+                Our mission is to provide the highest quality air compressor parts, ensuring optimal performance and durability for our customers. We are committed to continuous innovation and product development to meet the evolving needs of the industry. Customer satisfaction is our priority, achieved through exceptional service, support, and product availability. We implement sustainable practices to reduce our environmental footprint and foster a work environment that encourages growth, innovation, and excellence.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="services" style="background: white; padding: 80px 5%;">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-size: 2.5rem; color: var(--primary);">Industrial Services</h2>
+        <p style="color: #666;">Beyond parts, we provide comprehensive technical support.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; text-align: center;">
+        <div style="padding: 20px;">
+            <i class="fas fa-tools" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+            <h4>Installation Support</h4>
+            <p style="font-size: 0.9rem; color: #777;">Expert guidance for seamless part integration.</p>
+        </div>
+        <div style="padding: 20px;">
+            <i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+            <h4>Efficiency Audit</h4>
+            <p style="font-size: 0.9rem; color: #777;">Analyzing your system for energy-efficient upgrades.</p>
+        </div>
+        <div style="padding: 20px;">
+            <i class="fas fa-headset" style="font-size: 2.5rem; color: var(--dark); margin-bottom: 15px;"></i>
+            <h4>24/7 Technical Support</h4>
+            <p style="font-size: 0.9rem; color: #777;">Leading market intelligence and support at your fingertips.</p>
+        </div>
+        <div style="padding: 20px;">
+            <i class="fas fa-truck-loading" style="font-size: 2.5rem; color: #28a745; margin-bottom: 15px;"></i>
+            <h4>Global Logistics</h4>
+            <p style="font-size: 0.9rem; color: #777;">Reliable supply chain ensuring worldwide availability.</p>
+        </div>
+    </div>
+</section>
+<footer style="background: var(--dark); color: white; padding: 60px 5% 20px; font-size: 0.9rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left;">
+        
+        <div>
+            <h3 style="color: white; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px;">About Z-Compressor</h3>
+            <p style="color: #bbb; line-height: 1.7; text-align: justify;">
+                <strong>Air Compressor Aftermarket, Replacement, and Equivalent Parts and Kits</strong><br><br>
+                We specialize in supplying a comprehensive range of aftermarket, replacement, and equivalent parts and kits for oil-free screw air compressors. From 2000-hour kits to 24000-hour kits, we have everything for your maintenance needs.
+            </p>
+            <div style="margin-top: 20px;">
+                <h4 style="margin-bottom: 15px;">Social Media</h4>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="color: white; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; margin-bottom: 20px;">Information</h3>
+            <ul style="list-style: none; padding: 0; line-height: 2.5;">
+                <li><a href="/" style="color: #bbb; text-decoration: none;">About Us</a></li>
+                <li><a href="#" style="color: #bbb; text-decoration: none;">Terms & Conditions</a></li>
+                <li><a href="#" style="color: #bbb; text-decoration: none;">Privacy Policy</a></li>
+                <li><a href="#" style="color: #bbb; text-decoration: none;">Refund Policy</a></li>
+                <li><a href="#" style="color: #bbb; text-decoration: none;">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 style="color: white; border-bottom: 2px solid #28a745; display: inline-block; padding-bottom: 5px; margin-bottom: 20px;">Contact Details</h3>
+            <p style="color: #bbb; margin-bottom: 10px;">
+                <i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 10px;"></i>
+                Sai Shiv Park, Kate Pimple Road, Pimpri Gaon Pune 411017
+            </p>
+            <p style="color: #bbb; margin-bottom: 10px;">
+                <i class="fas fa-phone" style="color: var(--primary); margin-right: 10px;"></i>
+                +91 9579890672 / 9371086034 / 9511832263
+            </p>
+            <p style="color: #bbb; margin-bottom: 10px;">
+                <i class="fas fa-envelope" style="color: white; margin-right: 10px;"></i>
+                oilfree@zcompressorpartsindia.com
+            </p>
+            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px; margin-top: 20px;">
+                <strong style="color: white;">GST Number:</strong><br>
+                <span style="color: #28a745; letter-spacing: 1px;">27AACCZ4569N1ZI</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: #777;">
+        <p>© 2026 Z-COMPRESSOR Industrial Solutions. Designed by <strong>Aman Studio</strong>.</p>
+    </div>
+</footer>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    function moveSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    // Auto Slide
+    setInterval(() => moveSlide(1), 5000);
+</script>
+</body>
+</html>
