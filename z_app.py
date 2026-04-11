@@ -1,11 +1,18 @@
-import sqlite3
 import os
+import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, session
 
-app = Flask(__name__)
-app.secret_key = 'z_compressor_secret_key_2026'
-DB_NAME = 'z_compressor.db'
+app = Flask(__name__, 
+            template_folder='templates',
+            static_folder='static')
 
+app.secret_key = 'your_secret_key' # Jo bhi tumhari secret key hai
+
+def get_db():
+    # Render ke liye simple path
+    conn = sqlite3.connect('z_compressor.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 def get_db():
     conn = sqlite3.connect(DB_NAME)
     conn.row_factory = sqlite3.Row
@@ -103,6 +110,14 @@ def z_add():
 def logout():
     session.clear()
     return redirect(url_for('home'))
+import os
+
+# Isse Render ko folders mil jayenge
+app = Flask(__name__, 
+            template_folder='templates',
+            static_folder='static')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    # Render dynamic port use karta hai
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
