@@ -2,46 +2,30 @@ import os
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, session
 
+# 1. App initialization sirf EK baar honi chahiye, sabse upar
 app = Flask(__name__, 
             template_folder='templates',
             static_folder='static')
 
-app.secret_key = 'your_secret_key' # Jo bhi tumhari secret key hai
+app.secret_key = 'z_compressor_secret_key'
 
 def get_db():
-    # Render ke liye simple path
+    # Render ke liye database connection
     conn = sqlite3.connect('z_compressor.db')
     conn.row_factory = sqlite3.Row
     return conn
-def get_db():
-    conn = sqlite3.connect(DB_NAME)
-    conn.row_factory = sqlite3.Row
-    return conn
 
-# --- USER ROUTES ---
+# --- ROUTES ---
+
 @app.route('/')
 def home():
-    category = request.args.get('category')
-    search_query = request.args.get('search')
-    conn = get_db()
-    
-    if category:
-        items = conn.execute("SELECT * FROM inventory WHERE category = ?", (category,)).fetchall()
-    elif search_query:
-        items = conn.execute("SELECT * FROM inventory WHERE name LIKE ? OR part_no LIKE ?", 
-                             ('%'+search_query+'%', '%'+search_query+'%')).fetchall()
-    else:
-        items = conn.execute("SELECT * FROM inventory").fetchall()
-    
-    conn.close()
-    return render_template('z_index.html', items=items)
+    return render_template('z_index.html')
 
 @app.route('/shop')
 def shop():
     category = request.args.get('category')
     conn = get_db()
     if category:
-        # Smart filter jo Excel se match karega
         items = conn.execute("SELECT * FROM inventory WHERE category LIKE ?", ('%'+category+'%',)).fetchall()
     else:
         items = conn.execute("SELECT * FROM inventory").fetchall()
@@ -59,12 +43,11 @@ def checkout(id):
 def payment_complete():
     return render_template('success.html')
 
-# --- ADMIN & LOGIN ROUTES (Fixing "URL Not Found") ---
+# --- ADMIN & LOGIN ROUTES ---
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Aman, password wahi hai jo humne pehle set kiya tha
         if request.form.get('password') == 'AmanStudio2026':
             session['logged_in'] = True
             return redirect(url_for('admin'))
@@ -97,7 +80,7 @@ def z_add():
     category = request.form['category']
     price = request.form['price']
     description = request.form['description']
-    image = request.form['image']
+    image = request.form.get('image', '') # Use get to avoid errors if missing
     
     conn = get_db()
     conn.execute("INSERT INTO inventory (name, part_no, category, price, description, image) VALUES (?,?,?,?,?,?)",
@@ -110,12 +93,8 @@ def z_add():
 def logout():
     session.clear()
     return redirect(url_for('home'))
-import os
 
-# Isse Render ko folders mil jayenge
-app = Flask(__name__, 
-            template_folder='templates',
-            static_folder='static')
+# --- SERVER START ---
 
 if __name__ == '__main__':
     # Render dynamic port use karta hai
